@@ -1,0 +1,82 @@
+@use "../variables.scss" as *;
+
+.home {
+    height: 100vh;
+    width: 100vw;
+    background-color: $background-color-1;
+
+    .home__container {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+
+        .home__buttons {
+            width: 100%;
+            max-width: 20rem;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
+            gap: 1rem;
+            margin: 2rem 0;
+
+            .home__button {
+                input[type="radio"] {
+                    display: none;
+
+                    &:checked+label {
+                        &::after {
+                            transform: scaleX(1);
+                            transform-origin: left;
+                        }
+                    }
+                }
+
+                label {
+                    position: relative;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+                    height: 100%;
+                    padding: 0.5rem;
+                    color: $font-color;
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    letter-spacing: 0.2rem;
+                    cursor: pointer;
+                    transition: all 0.3s ease-out;
+
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        height: 2px;
+                        background-color: rgb(255, 255, 255);
+                        transform: scaleX(0);
+                        transform-origin: center;
+                        transition: all 0.3s ease-out;
+                    }
+
+                    &:hover {
+                        color: $background-color-3;
+
+                        &::after {
+                            background-color: $background-color-3;
+                        }
+                    }
+                }
+            }
+        }
+
+        .home__screen {
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
