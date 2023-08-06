@@ -2,10 +2,21 @@ import React, { useState, useEffect } from 'react';
 import moment from 'moment-timezone';
 
 import "../styles/components/Clock.scss";
+import List from './List';
 
 function Clock() {
-    const [selectedCountry, setSelectedCountry] = useState('UTC');
-    const [currentTime, setCurrentTime] = useState(moment().tz('UTC').format('HH:mm:ss'));
+    const [selectedCountry, setSelectedCountry] = useState('Europe/Paris');
+    const [currentTime, setCurrentTime] = useState(moment().tz(selectedCountry).format('HH:mm:ss'));
+    const [inputText, setInputText] = useState("");
+
+    function inputHandler(e: { target: { value: string; }; }) {
+        var lowerCase = e.target.value.toLowerCase();
+        setInputText(lowerCase);
+    };
+
+    function handleCountryChange(event: { target: { value: React.SetStateAction<string>; }; }) {
+        setSelectedCountry(event.target.value);
+    };
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -15,30 +26,16 @@ function Clock() {
         return () => clearInterval(interval);
     }, [selectedCountry, currentTime]);
 
-    function handleCountryChange(event: { target: { value: React.SetStateAction<string>; }; }) {
-        setSelectedCountry(event.target.value);
-    };
-
     return (
         <div className='clock'>
             <div className='container'>
-                <div className='left'>
-                    <div className='localisation'>
-                        <h1>World Clock</h1>
-                        <label>Select Country:</label>
-                        <select value={selectedCountry} onChange={handleCountryChange}>
-                            <option value="UTC">UTC</option>
-                            <option value="America/New_York">New York</option>
-                            <option value="Europe/London">London</option>
-                            <option value="Asia/Tokyo">Tokyo</option>
-                        </select>
-                    </div>
+                <div className='title'>
+                    <h2>Time in <strong>{selectedCountry}</strong></h2>
+                    <h3>{currentTime}</h3>
                 </div>
-                <div className='right'>
-                    <div className='time'>
-                        <h2>Time in {selectedCountry}:</h2>
-                        <p>{currentTime}</p>
-                    </div>
+                <div className='content'>
+                    <input className='search__bar' type="text" placeholder="Search for a country..." value={inputText} onChange={inputHandler} />
+                    <List input={inputText} country={handleCountryChange} selectedCountry={selectedCountry} />
                 </div>
             </div>
         </div>

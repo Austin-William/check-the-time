@@ -1,3 +1,5 @@
+@use "./variables.scss" as *;
+
 @font-face {
     font-family: 'Kusanagi';
     src: local('Kusanagi'), url(//assets/fonts/Kusanagi/Kusanagi.otf) format('otf');
@@ -24,4 +26,25 @@ code {
 
 * {
     font-family: 'Mars', sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+    background-color: $background-color-1;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: $background-color-2;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: $background-color-3;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background-color: $background-color-4;
 }

@@ -1,21 +1,82 @@
+@use "../variables.scss" as *;
+
 .clock {
     height: 100%;
     width: 100%;
-    
-    .container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-        .left, .right {
+    .container {
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        color: $font-color;
+
+        .title {
+            font-size: clamp(10px, 3.5vw, 4rem);
+            font-weight: 700;
+            letter-spacing: 0.5rem;
+
+            h3 {
+                text-align: center;
+                font-size: min(10vw, 6rem);
+            }
+
+            strong {
+                color: $background-color-5;
+                text-align: center;
+
+                &::before {
+                    content: " ";
+                    display: inline-block;
+                    width: calc(0.2rem + 0.5vw);
+                    height: calc(0.2rem + 0.5vw);
+                    border-radius: 50%;
+                    background-color: $background-color-5;
+                    margin-right: 0.5rem;
+                }
+            }
+        }
+
+        .content {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 50rem;
-            width: 100%;
+            gap: 1.5rem;
+
+            .search__bar {
+                position: relative;
+                color: $font-color;
+                width: 100%;
+                font-size: clamp(10px, 1.5vw, 4rem);
+                border: none;
+                background-color: $background-color-1;
+                padding: 0.5rem;
+                border-bottom: 0.2rem solid rgba($background-color-5, 0.15);
+                letter-spacing: 0.1rem;
+                transition: all 0.2s ease-in-out;
+
+                &::placeholder {
+                    color: $font-color;
+                    opacity: 0.5;
+                    font-weight: 500;
+                    text-align: center;
+                }
+
+                &:hover, &:focus {
+                    border-bottom: 0.2rem solid $background-color-5;
+                }
+
+                &:focus {
+                    outline: none;
+                    box-shadow: 0 0 0.5rem $background-color-5;
+                }
+            }
         }
     }
 }

@@ -3,38 +3,66 @@ import React, { useState, useEffect } from 'react';
 import "../styles/components/Timer.scss";
 
 function Timer() {
-    const [seconds, setSeconds] = useState(0);
     const [isActive, setIsActive] = useState(false);
+    const [isPaused, setIsPaused] = useState(true);
+    const [time, setTime] = useState(0);
 
-    function handleStartStop() {
-        setIsActive((prevState) => !prevState);
+    function handleStart() {
+        setIsActive(true);
+        setIsPaused(false);
+    };
+
+    function handlePauseResume() {
+        setIsPaused(!isPaused);
     };
 
     function handleReset() {
-        setSeconds(0);
         setIsActive(false);
+        setTime(0);
     };
 
-    useEffect(() => {
-        let interval: string | number | NodeJS.Timeout | undefined;
+    function formatTime() {
+        return (
+            <h1 className='timer__text'>
+                <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}</span>
+                <span>:</span>
+                <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}</span>
+                <span>:</span>
+                <span>{("0" + ((time / 10) % 100)).slice(-2)}</span>
+            </h1>
+        )
+    }
 
-        if (isActive) {
+    useEffect(() => {
+        let interval: string | number | NodeJS.Timer | undefined = undefined;
+
+        if (isActive && isPaused === false) {
             interval = setInterval(() => {
-                setSeconds((prevSeconds) => prevSeconds + 1);
-            }, 1000);
-        } else if (!isActive && seconds !== 0) {
+                setTime((time) => time + 10);
+            }, 10);
+        } else {
             clearInterval(interval);
         }
-        return () => clearInterval(interval);
-    }, [isActive, seconds]);
+        return () => {
+            clearInterval(interval);
+        };
+    }, [isActive, isPaused]);
+
+
 
     return (
         <div className='timer'>
-            <h1>Timer: {seconds}s</h1>
-            <button onClick={handleStartStop}>
-                {isActive ? 'Pause' : 'Start'}
-            </button>
-            <button onClick={handleReset}>Reset</button>
+            <div className='container'>
+                <div>{formatTime()}</div>
+                <div className='timer__buttons'>
+                    <button className={isActive ? (isPaused ? 'button timer__resume__button' : 'button timer__pause__button') : 'button timer__start__button'} onClick={isActive ? handlePauseResume : handleStart}>
+                        {isActive ? (isPaused ? 'Resume' : 'Pause') : 'Start'}
+                    </button>
+                    <button className='button timer__reset__button' onClick={handleReset}>
+                        Reset
+                    </button>
+                </div>
+            </div>
         </div>
     )
 }
