@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/CheckTheTime/static/css/main.913b9f01.css",
+    "main.js": "/CheckTheTime/static/js/main.d1fe5abd.js",
+    "index.html": "/CheckTheTime/index.html",
+    "main.913b9f01.css.map": "/CheckTheTime/static/css/main.913b9f01.css.map",
+    "main.d1fe5abd.js.map": "/CheckTheTime/static/js/main.d1fe5abd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.913b9f01.css",
+    "static/js/main.d1fe5abd.js"
+  ]
+}
