@@ -1,4 +1,3 @@
-import React from 'react';
 import moment from 'moment-timezone';
 
 import '../styles/components/List.scss';

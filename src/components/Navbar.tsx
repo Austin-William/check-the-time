@@ -1,5 +1,3 @@
-import React from 'react';
-
 import '../styles/components/Navbar.scss';
 
 function Navbar(props: { value: string; setKey: (arg0: string) => void; }) {

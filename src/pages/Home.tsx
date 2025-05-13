@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import Clock from '../components/Clock';
 import Timer from '../components/Timer';
@@ -15,7 +15,6 @@ function Home() {
                 return <Clock />;
             case "timer":
                 return <Timer />;
-
             default:
                 break;
         }
