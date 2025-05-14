@@ -2,9 +2,9 @@ import { useState } from 'react';
 
 import Clock from '../components/Clock';
 import Timer from '../components/Timer';
+import Navbar from '../components/Navbar';
 
 import "../styles/pages/Home.scss";
-import Navbar from '../components/Navbar';
 
 function Home() {
     const [key, setKey] = useState("clock");
