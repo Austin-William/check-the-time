@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/CheckTheTime/static/css/main.913b9f01.css",
-    "main.js": "/CheckTheTime/static/js/main.d1fe5abd.js",
-    "index.html": "/CheckTheTime/index.html",
-    "main.913b9f01.css.map": "/CheckTheTime/static/css/main.913b9f01.css.map",
-    "main.d1fe5abd.js.map": "/CheckTheTime/static/js/main.d1fe5abd.js.map"
+    "main.css": "/check-the-time/static/css/main.6d2a8408.css",
+    "main.js": "/check-the-time/static/js/main.541a4b75.js",
+    "index.html": "/check-the-time/index.html",
+    "main.6d2a8408.css.map": "/check-the-time/static/css/main.6d2a8408.css.map",
+    "main.541a4b75.js.map": "/check-the-time/static/js/main.541a4b75.js.map"
   },
   "entrypoints": [
-    "static/css/main.913b9f01.css",
-    "static/js/main.d1fe5abd.js"
+    "static/css/main.6d2a8408.css",
+    "static/js/main.541a4b75.js"
   ]
 }
