@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Check the time",
+  "name": "Check the time",
+  "description": "Check the time in different time zones",
   "icons": [
     {
       "src": "favicon.ico",
